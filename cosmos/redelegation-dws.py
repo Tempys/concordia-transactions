@@ -37,12 +37,13 @@ def parceBalance(text):
 
 
 def generateDelegateCommand(sum,walet,project_name,validator_addr,denom):
-    return f' { project_name } tx staking delegate {validator_addr} {sum} {denom} --gas auto  --from {walet} '.format(project_name =project_name,validator_addr= validator_addr,denom=denom,sum= sum,walet= walet)
+    return f'{ project_name } tx staking delegate {validator_addr} {sum}{denom} --gas auto  --from {walet} '.format(project_name =project_name,validator_addr= validator_addr,denom=denom,sum= sum,walet= walet)
 
 
 if __name__ == '__main__':
     addr = 'deweb1deq0tdlv0rtt6e7646auzsul5mrn3dn07q2gdd'
-    wallet = 'my_wallet'
+    wallet = '' \
+             ''
     project_command = 'dewebd'
     password = "Misha1987+"
     denom = "udws"
