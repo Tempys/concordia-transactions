@@ -9,7 +9,8 @@ def get_list():
     for record in records:
        fields = record["fields"]
        try:
-          print(fields["name"] +"."+ fields["status"])
+           print(fields["name"])
+          # print(fields["name"] +"."+ fields["status"])
        except Exception :
           print("ignore")
 
