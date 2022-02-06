@@ -18,7 +18,7 @@ celestia-appd tx staking delegate celesvaloper173evmj8dkx3mmakj8sgru0zzdx48yczyq
 
 
 get balance
- celestia-appd q bank balances celes173evmj8dkx3mmakj8sgru0zzdx48yczy95jyt2
+ celestia-appd q bank balances celes1z5nty8wjkgpwfx0hlxhwfzdwnf47zf0facfth8 --keyring-backend=test
 
 get address
  celestia-appd keys show my_wallet --bech val --keyring-backend=test
@@ -49,7 +49,7 @@ create key
 celestia-appd keys add tt3 --keyring-backend=test
 
 send from 1 to other
-celestia-appd tx bank send celes1lquu229mlnk9ypte85uqw3s7jj9w6kutdf0z27 celes173evmj8dkx3mmakj8sgru0zzdx48yczy95jyt2 11000000celes --chain-id=devnet-2 --keyring-backend test
+celestia-appd tx bank send celes1z5nty8wjkgpwfx0hlxhwfzdwnf47zf0facfth8 celes173evmj8dkx3mmakj8sgru0zzdx48yczy95jyt2 1100000celes --chain-id=devnet-2 --keyring-backend test
 
 
 evmosd keys add <wallet> --recover 
@@ -61,3 +61,10 @@ evmosd keys add <wallet> --recover
  Restored the wallet on new server with evmosd keys add <wallet> --recover 
  Copied priv_validator_key.json from old node to new node  .evmosd/config/priv_validator_key.json
  Started new node
+ 
+withdrow all rewards
+======================
+
+
+celestia-appd  query distribution rewards celes173evmj8dkx3mmakj8sgru0zzdx48yczy95jyt2 --chain-id=devnet-2
+celestia-appd  tx distribution withdraw-all-rewards --from="my_wallet" --chain-id=devnet-2
