@@ -18,7 +18,8 @@ celestia-appd tx staking delegate celesvaloper173evmj8dkx3mmakj8sgru0zzdx48yczyq
 
 
 get balance
- celestia-appd q bank balances celes1z5nty8wjkgpwfx0hlxhwfzdwnf47zf0facfth8 --keyring-backend=test
+ celestia-appd q bank balances celes173evmj8dkx3mmakj8sgru0zzdx48yczy95jyt2 --keyring-backend=test
+ celestia-appd q bank balances celes1p35tdf949qfjfpr3f9z4fse34kt2zt3lafydrm --keyring-backend=test
 
 get address
  celestia-appd keys show my_wallet --bech val --keyring-backend=test
@@ -49,7 +50,7 @@ create key
 celestia-appd keys add tt3 --keyring-backend=test
 
 send from 1 to other
-celestia-appd tx bank send celes1z5nty8wjkgpwfx0hlxhwfzdwnf47zf0facfth8 celes173evmj8dkx3mmakj8sgru0zzdx48yczy95jyt2 1100000celes --chain-id=devnet-2 --keyring-backend test
+celestia-appd tx bank send celes1lquu229mlnk9ypte85uqw3s7jj9w6kutdf0z27 celes173evmj8dkx3mmakj8sgru0zzdx48yczy95jyt2 1100000celes --chain-id=devnet-2 --keyring-backend test
 
 
 evmosd keys add <wallet> --recover 
@@ -68,3 +69,15 @@ withdrow all rewards
 
 celestia-appd  query distribution rewards celes173evmj8dkx3mmakj8sgru0zzdx48yczy95jyt2 --chain-id=devnet-2
 celestia-appd  tx distribution withdraw-all-rewards --from="my_wallet" --chain-id=devnet-2
+
+
+evmosd add-genesis-account $(evmosd keys show my_wallet -a) 5300353356890460000aevmos
+
+evmosd gentx my_wallet 5300353356890460000aevmos \
+  --chain-id=evmos_9001-1 \
+  --moniker=md_moniker \
+  --details="" \
+  --commission-rate=0.05 \
+  --commission-max-rate=0.2 \
+  --commission-max-change-rate=0.01 \
+  --pubkey $(evmosd tendermint show-validator) 
