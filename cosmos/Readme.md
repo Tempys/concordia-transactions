@@ -68,7 +68,7 @@ withdrow all rewards
 
 
 celestia-appd  query distribution rewards celes173evmj8dkx3mmakj8sgru0zzdx48yczy95jyt2 --chain-id=devnet-2
-celestia-appd  tx distribution withdraw-all-rewards --from="my_wallet" --chain-id=devnet-2
+celestia-appd  tx distribution withdraw-all-rewards --from="my_wallet" --chain-id=evmos_9000-4
 
 
 evmosd add-genesis-account $(evmosd keys show my_wallet -a) 5300353356890460000aevmos
@@ -80,4 +80,14 @@ evmosd gentx my_wallet 5300353356890460000aevmos \
   --commission-rate=0.05 \
   --commission-max-rate=0.2 \
   --commission-max-change-rate=0.01 \
+  --gas-adjustment=1.5 \
   --pubkey $(evmosd tendermint show-validator) 
+
+
+
+tx staking delegate celesvaloper173evmj8dkx3mmakj8sgru0zzdx48yczyqeaxuz 1100000celes --from=my_wallet --chain-id=devnet-2
+evmosd tx slashing unjail  --gas=auto --chain-id evmos_9000-4 --from my_wallet
+evmosd tx staking delegate evmosvaloper144p4mlj9ju8rencusw2835cjmu9yf2v86mc6h8 999999999999258atevmos --gas=auto --gas-adjustment=1.5   --from my_wallet --chain-id=evmos_9000-4
+
+
+evmosd tx gov vote 14 yes --from my_wallet --chain-id evmos_9000-4

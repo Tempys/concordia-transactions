@@ -39,7 +39,7 @@ def parceBalance(text):
 
 
 def generateDelegateCommand(sum,walet):
-    return 'evmosd tx staking delegate evmosvaloper144p4mlj9ju8rencusw2835cjmu9yf2v86mc6h8 '+sum+f'aphoton --gas auto  --from {walet} '.format(walet= walet)
+    return 'evmosd tx staking delegate evmosvaloper144p4mlj9ju8rencusw2835cjmu9yf2v86mc6h8 '+sum+f'aevmos --gas=auto --gas-adjustment=1.5 --gas-prices 0.001aevmos  --from {walet} '.format(walet= walet)
 
 
 if __name__ == '__main__':
