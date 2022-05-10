@@ -1,19 +1,4 @@
 #!/bin/bash
-echo "=================================================="
-echo -e "\033[0;35m"
-echo "      ___                        ___                                    _____    ";
-echo "     /  /\          ___         /  /\                      ___         /  /::\   ";
-echo "    /  /::|        /__/\       /  /::\                    /  /\       /  /:/\:\  ";
-echo "   /  /:/:|        \  \:\     /  /:/\:\    ___     ___   /  /:/      /  /:/  \:\ ";
-echo "  /  /:/|:|__       \  \:\   /  /:/~/::\  /__/\   /  /\ /__/::\     /__/:/ \__\:|";
-echo " /__/:/ |:| /\  ___  \__\:\ /__/:/ /:/\:\ \  \:\ /  /:/ \__\/\:\__  \  \:\ /  /:/";
-echo " \__\/  |:|/:/ /__/\ |  |:| \  \:\/:/__\/  \  \:\  /:/     \  \:\/\  \  \:\  /:/ ";
-echo "     |  |:/:/  \  \:\|  |:|  \  \::/        \  \:\/:/       \__\::/   \  \:\/:/  ";
-echo "     |  |::/    \  \:\__|:|   \  \:\         \  \::/        /__/:/     \  \::/   ";
-echo "     |  |:/      \__\::::/     \  \:\         \__\/         \__\/       \__\/    ";
-echo "     |__|/           ~~~~       \__\/                                            ";
-echo -e "\e[0m"
-echo "=================================================="
 
 sleep 2
 
@@ -84,7 +69,7 @@ create_identity(){
     docker exec -it aptos_tools aptos-operational-tool generate-key --encoding hex --key-type x25519 --key-file $HOME/private-key.txt | grep 'Success' &> /dev/null
     if [ $? == 0 ]; then
         docker exec -it aptos_tools cat $HOME/private-key.txt > $HOME/aptos/identity/private-key.txt
-        docker exec -it aptos_tools aptos-operational-tool extract-peer-from-file --encoding hex --key-file $HOME/private-key.txt --output-file $HOME/peer-info.yaml &> /dev/null
+
         docker exec -it aptos_tools cat $HOME/peer-info.yaml > $HOME/aptos/identity/peer-info.yaml
         PEER_ID=$(sed -n 2p $HOME/aptos/identity/peer-info.yaml | sed 's/\(.*\):/\1/')
         PEER_ID=${PEER_ID//$'\r'/}
